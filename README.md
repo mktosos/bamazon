@@ -3,9 +3,10 @@ This project uses node.js and mysql to create an online store's inventory in a m
 
 Inquire and mysql are required to run this app.
 
-Sceenshot images of app running different parameters. * app screenshot concert-this * app screenshot concert-this2 * app screenshot do-what-it-says * app screenshot do-what-it-says2 * app screenshot do-what-it-says3 * app screenshot movie-this * app screenshot movie-this2
+Sceenshot images of app running different parameters.
+*[ app screenshot](/images/Screen Shot 2019-03-22 at 5.17.00 PM.png)
+*[ app screenshot](/images/Screen Shot 2019-03-22 at 4.23.14 PM.png)
 
-Known issues: 
 
 Credits: The game project student developer is Mike Taniguchi.
 
