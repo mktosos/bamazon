@@ -38,7 +38,7 @@ function buyInfo() {
       {
         name: 'item',
         type: 'input',
-        message: 'What is the product ID you would like to buy?',
+        message: 'Enter the "id" of the item you would like to purchase',
       },
       {
         name: 'quantity',
@@ -52,37 +52,32 @@ function buyInfo() {
         console.log(answer);
         //console.log(answer.quantity);
         //console.log(res[0].stock_quantity);
-        console.log(res[0]);
+        //console.log(res[0]);
         if (answer.quantity<=res[0].stock_quantity){
           var remainingInventory = res[0].stock_quantity - answer.quantity;
           console.log("updated inventory: " +remainingInventory+ " units");
           console.log("total cost of purchase: $" +answer.quantity * res[0].price);
+          connection.query(
+            "UPDATE products SET ? WHERE ?",
+            [
+              {
+                stock_quantity: remainingInventory
+              },
+              {
+                id: answer.item
+              }
+            ],
+            function(error) {
+              if (error) throw err;
+              console.log("Inventory updated successfully!");
+              
+            }
+          );
 
         }
         else{
           console.log("Sorry insufficient inventory. Order can not be fulfilled. Only " + res[0].stock_quantity+" available.");
         }
       });
-      
-      //console.log(res[answer.item].stock_quantity);
-      // when finished prompting, insert a new item into the db with that info
-    //   connection.query(
-    //     'INSERT INTO auctions SET ?',
-    //     {
-    //       item_name: answer.item,
-    //       category: answer.category,
-    //       starting_bid: answer.startingBid || 0,
-    //       highest_bid: answer.startingBid || 0,
-    //     },
-    //     function(err) {
-    //       if (err) throw err;
-    //       console.log('Your auction was created successfully!');
-    //       // re-prompt the user for if they want to bid or post
-    //       start();
-    //     }
-    //   );
   });
-  
-    
-  
 }
